@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home page - InHolland</title>
+	<style type="text/css">
+      *{
+        font-family: "Lato", Helvetica, Arial, sans-serif;
+        color:rgb(50,50,50);
+        padding: 0;
+        margin:0;
+      }
+      body{
+        background: -webkit-linear-gradient(left top,tomato 40%, orange 70%);
+        height:100vh;
+      }
+      h1{
+        color:white;
+      }
+      .father-container{
+        height:100vh;
+        display : flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content:center;
+      }
+      .container{
+        width:400px;
+        margin: 20px;
+      }
+      .container{
+      	box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+      }
+      .main{
+        border-radius:3px;
+        background:white;
+        padding:20px;
+        line-height:10px;
+      }
+
+      .cadre{
+      	border-radius:3px;
+        	width:100%;
+
+      }
+      .flesh{
+        margin-left:20px;
+        height:0;
+        width:0;
+        border-bottom:9px solid white;
+        border-right:7px solid transparent;
+        border-left:7px solid transparent;
+      }
+      .autre{
+        padding:20px;
+        padding-bottom:30px;
+        background-color:white;
+        border-radius:3px;
+      }
+      b{
+      	color:rgb(150,150,150);
+      }
+      nav{
+        background: white;
+        display:flex;
+        flex-direction:row;
+        justify-content: space-around;
+        align-items: center;
+        padding:5px;
+        position: fixed;
+        width: 100vw;
+        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3); 
+      }
+      .logo{
+        text-transform: capitalize;
+        font-family: serif;
+        font-weight: bold;
+        font-size: 1.2em;
+        color:white;
+        height: 30px;
+      }
+      ul{
+        list-style:none;
+      }
+      li{
+        margin: 10px;
+        display:inline-block;
+      }
+      a{
+        color:rgb(10,10,10);
+        text-decoration: none;
+        text-transform:uppercase;
+        font-size:.8em;
+      }
+      .logout{
+        color: rgb(100,100,100);
+      }
+	</style>
+
+</head>
+<body>
+	<nav>
+    <img src="https://www.surf.nl/files/2019-03/Inholland.png" class='logo'>
+      <ul>
+
+        {% if user.is_authenticated %}
+
+        <li><a href="/teachers">Our Teachers</a></li>
+        <li><a href="/students">Our Students</a></li>
+        <li><a href="/exams">Exams</a></li>
+
+
+        {% if user.profile.user_type == 'T' %}
+           <li><a href="/results">Results</a></li>
+           <li><a href="/create_student">Add Student</a></li>
+        {% else %}
+           <li><a href="/results/{{user.id}} " >Results</a></li>
+        {% endif %}
+
+
+        <li><a href="/logout" class='logout'>Log Out</a></li>
+
+        {% else %}
+
+        <li><a href="/login" class='logout'>Log In</a></li>
+
+        {% endif %}
+
+      </ul>
+
+  </nav>
+
+
+	<div class="father-container">
+	  {% for study in std %}
+	  <div class="container">
+	    <div class="main"><a href={% if user.is_authenticated %} "/study_details/{{study.id_study}} " {% else %} '' {% endif %}><b>{{study.study_name}}</b></a>
+	    </div>
+	    <div class="cadre">
+	      <div class="flesh"></div>
+	      <div class="autre"><b>Details :</b><br><br> Description : {{study.description}} <br> Language : {{study.language}} <br> Duration : {{study.number_of_years}}</div>
+	    </div>
+	  </div>
+	  {% endfor %}
+	</div>
+
+</body>
+</html>

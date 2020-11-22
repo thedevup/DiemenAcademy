@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Study details</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<style type="text/css">
+			*{
+				font-family: "Lato", Helvetica, Arial, sans-serif;
+			}
+			body{
+			  background: -webkit-linear-gradient(left top,tomato 40%, orange 70%);
+			  height:100vh;
+			}
+			.container{
+			  margin-top: 30px;
+			}
+		
+			table caption {
+				padding: .5em 0;
+				color: white;
+			}
+
+			table {
+				padding: .5em 0;
+				border-collapse: collapse;
+				margin: 25px 0;
+				font-size: 0.9em;
+				min-width: 400px;
+				border-radius: 5px 5px 0 0;
+				overflow: hidden;
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+				margin: auto;
+			}
+			thead tr{
+				background-color: rgb(200,200,200);
+				font-weight: bold;
+			}
+
+			@media screen and (max-width: 767px) {
+			  table caption {
+			    border-bottom: 1px solid #ddd;
+			  }
+			}
+
+			.p {
+			    text-align: center;
+			    padding-top: 140px;
+			    font-size: 14px;
+			}
+			tbody tr {
+  				background-color: rgb(240,240,240);
+			}
+			tbody tr:nth-of-type(even) {
+  				background-color: rgb(230,230,230);
+			}
+
+	</style>
+</head>
+<body>
+	
+	<div class="container">
+	  <div class="row">
+	    <div class="col-xs-12">
+	      <div class="table-responsive">
+	        <table class="table table-bordered table-hover">
+	          <caption class="text-center">List of your results</caption>
+	          <thead>
+	            <tr>
+	              <th>Exam</th>
+	              <th>Grade</th>
+	              <th>Passed</th>
+
+	            </tr>
+	          </thead>
+	          <tbody>
+	          	
+	            {% for result in rslt %}
+	            <tr>
+	              <td>{{result.exam_id_exam.course_id_course.course_name}}</td>
+	              <td>{{result.grade}}</td>
+	       		  <td>{{result.passed}}</td>
+	            </tr>
+	            {% endfor %}
+	          </tbody>
+	        </table>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Study details</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<style type="text/css">
+			*{
+				font-family: "Lato", Helvetica, Arial, sans-serif;
+			}
+			body{
+			  background: -webkit-linear-gradient(left top,tomato 40%, orange 70%);
+			  height:100vh;
+			}
+			.container{
+			  margin-top: 30px;
+			}
+		
+			table caption {
+				padding: .5em 0;
+				color: white;
+			}
+
+			table {
+				padding: .5em 0;
+				border-collapse: collapse;
+				margin: 25px 0;
+				font-size: 0.9em;
+				min-width: 400px;
+				border-radius: 5px 5px 0 0;
+				overflow: hidden;
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+				margin: auto;
+			}
+			thead tr{
+				background-color: rgb(200,200,200);
+				font-weight: bold;
+			}
+
+			@media screen and (max-width: 767px) {
+			  table caption {
+			    border-bottom: 1px solid #ddd;
+			  }
+			}
+
+			.p {
+			    text-align: center;
+			    padding-top: 140px;
+			    font-size: 14px;
+			}
+			tbody tr {
+  				background-color: rgb(240,240,240);
+			}
+			tbody tr:nth-of-type(even) {
+  				background-color: rgb(230,230,230);
+			}
+
+
+	</style>
+
+
+</head>
+<body>
+
+	<div class="container">
+	  <div class="row">
+	    <div class="col-xs-12">
+	      <div class="table-responsive">
+	        <table class="table table-bordered table-hover">
+	          <caption class="text-center">List of enrolled students in the study</caption>
+	          <thead>
+	            <tr>
+	              <th>Rooom</th>
+	              <th>Resit</th>
+	              <th>Date</th>
+	              <th>Time</th>
+	              <th>Course</th>
+	            </tr>
+	          </thead>
+	          <tbody>
+	          	{% for exam in exm %}
+	            <tr>
+	              <td>{{exam.room}}</td>
+	              <td>{{exam.resit}}</td>
+	              <td>{{exam.date}}</td>
+	              <td>{{exam.time}}</td>
+	              <td>{{exam.course_id_course.course_name}}</td>
+	       
+	            </tr>
+	            {% endfor %}
+	          </tbody>
+	        </table>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+</body>
+</html>

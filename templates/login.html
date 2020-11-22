@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Log in page</title>
+	<script src="https://use.fontawesome.com/c89020b77a.js"></script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			box-sizing: border-box;
+		}
+		body{
+		  height:100vh;
+		}
+		body, form{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		body{
+			background-color: rgb(30,30,35);
+		}
+		form{
+			background-color: rgb(35,35,40);
+			height: 200px;
+			width: 320px;
+			flex-direction: column;
+			border-radius: 5px;
+
+		}
+		input[type="submit"]{
+			height:45px ;
+			width: 100%;
+			background-color: tomato;
+			border: 0;
+			color: white;
+			font-family: arial;
+		}
+		input[type="text"], input[type="password"]{
+			height:45px ;
+			width: 100%;
+			border:0;
+			border-bottom: solid 1px rgb(220,220,220);
+			text-align: center;
+		}
+		.user-login{
+			font-family: arial;
+			color: rgb(90,90,95);
+			margin-top: 15px;
+		}
+		.login-link{
+			text-decoration: none;
+			color: tomato;
+		}
+		.login-link:hover{
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+
+	<form method="POST">
+		{%csrf_token%}
+		<input type="text" name="username" placeholder="username">
+		<input type="password" name="password" placeholder="password">
+		<input type="submit" name="sumbit" value="sign in">
+		
+	</form>
+
+	
+</body>
+</html>

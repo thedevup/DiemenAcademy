@@ -1,0 +1,46 @@
+*{
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  color:rgb(50,50,50);
+}
+body{
+  background: -webkit-linear-gradient(left top,tomato 40%, orange 70%);
+  height:100vh;
+}
+h1{
+  color:white;
+}
+.father-container{
+  height:100vh;
+  display : flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.container{
+  margin-top:20px;
+  width:400px;
+}
+.main{
+  border-radius:3px;
+  background:white;
+  padding:20px;
+  line-height:10px;
+}
+
+.cadre{
+  width:100%;
+  height:200px;
+  padding-top:10px;
+}
+.flesh{
+  margin-left:20px;
+  height:0;
+  width:0;
+  border-bottom:9px solid white;
+  border-right:7px solid transparent;
+  border-left:7px solid transparent;
+}
+.autre{
+  height:180px;
+  background-color:white;
+  border-radius:3px;
+}

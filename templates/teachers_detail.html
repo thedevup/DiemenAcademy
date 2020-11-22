@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Teachers page</title>
+	<style type="text/css">
+		* {
+		   padding:0;
+		   margin:0;
+		}
+ 
+		body {
+	
+		   margin: 0;
+		   display: grid;
+		   place-items: center;
+		   padding: 1rem;
+		   background: white;
+		   font-family: 'Source Code Pro', monospace;
+		   background: -webkit-linear-gradient(left top,tomato 40%, orange 70%);
+		}
+
+		.card { 
+		   width: 500px ;
+		   height: 300px; 
+		   margin:20px;
+		   border-radius: 15px;  
+		   background: black;
+		   display: grid;
+		   grid-template-columns: 40% auto;
+		   color: white;
+		   align-items: center; 
+		}
+
+		.card-details {
+		   padding: 1rem;
+		}
+
+		.name {
+		   font-size: 1.25rem;
+		}
+
+		.occupation {
+		   font-weight: 600;
+		   color: #ff1ead;
+		}
+
+		.card-avatar {
+		   display: grid;
+		   place-items: center;
+		   width:150px;
+		   margin:auto;
+		}
+
+		.card-about {
+		   margin-top: 1rem;
+		   display: grid;
+		   grid-auto-flow: column;
+		}
+
+		.item {
+		   display: flex;
+		   flex-direction: column;
+		   margin-bottom: 0.5rem;
+		}
+		.value {
+		      font-size: 1rem;
+		}
+		   
+		.label {
+		      margin-top: 0.15rem;
+		      font-size: 0.75rem;
+		      font-weight: 600;
+		      color: #ff1ead;
+		 }
+
+
+		.skills .value {
+		   font-size:12px;
+		}
+		.skills{
+		   margin-top:20px;
+		}
+	</style>
+</head>
+<body>
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500" rel="stylesheet">
+{% for teacher in tcr %}
+<div class="card">
+   <div class="card-avatar">
+   		{% if teacher.gender == 'M' %}
+      <img src="https://image.flaticon.com/icons/svg/828/828822.svg" alt="">
+        {% else %}
+      <img src="https://image.flaticon.com/icons/svg/828/828807.svg" alt="">
+        {% endif %}
+   </div>
+   <div class="card-details">
+      <div class="name">{{teacher.first_name}} {{teacher.last_name}}</div>
+      <div class="occupation">Teacher</div>
+      
+      <div class="card-about">
+         <div class="item">
+            <span class="value">{{teacher.date_of_birth}} </span>
+            <span class="label">Date of birth</span>
+         </div>
+         
+         <div class="item">
+            <span class="value">{{teacher.nationality}}</span>
+            <span class="label">nationality</span>
+         </div>
+         
+      </div>
+      <div class="skills">
+         <span class="value"><b>More data</b> <br> Phone number : {{teacher.phone}} <br> Address : {{teacher.street_name}} {{teacher.street_number}}, {{teacher.postal_code}}, {{teacher.city}} <br> 
+
+         	{% if user.is_authenticated %}
+    			{% if user.profile.user_type == 'T' %}
+    				Salary : {{teacher.salary}} €
+    			{% endif %}
+    		{% endif %}
+         	<br> 
+         {% if teacher.study_counselor == 'N' %}
+         	Not a
+         {% endif %}
+         	study counselor
+         </span>
+      </div>
+   </div>
+</div>
+{% endfor %}
+</body>
+</html>
